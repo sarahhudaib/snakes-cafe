@@ -1,62 +1,87 @@
-def restaurant_menu():
-    print("**************************************")
-    print("**    Welcome to the Snakes Cafe!   **")
-    print("**    Please see our menu below.    **")
-    print("**")
-  
-    quit_rest= input("*** To quit at any time, type quit ***\n")
-    if quit_rest == "quit":
-        print("*******       Bye Bye           ******")
-        print("**************************************")
-    
-    else:
-       print("**************************************")
-       print("**    Please see our menu below.    **")
-       print("**************************************")
-       
-       print (appetizers())
-       print (entrees())
-       print (desserts())
-       print (drinks())
-       print (order_now())
- 
+def main():
+    first_message = """
+    $ python snakes_cafe.py
+    **************************************
+    **    Welcome to the Snakes Cafe!   **
+    **    Please see our menu below.    **
+    **
+    ** To quit at any time, type "quit" **
+    **************************************
 
-def appetizers():
-    print("\n")
-    print("Appetizers")
-    print("----------")
-    appetizer_rest=["Wings","Cookies","Spring Rolls"]
-    for i in appetizer_rest:
-       print('\n'.join(appetizer_rest))
-    
-def entrees():
-    print("\n")
-    print("Entrees")
-    print("-------")
-    entrees_rest=["Salmon","Steak ","Meat Tornado","A Literal Garden"]
-    for i in entrees_rest:
-       print('\n'.join(entrees_rest))
+    Appetizers
+    ----------
+    Wings
+    Cookies
+    Spring Rolls
 
-def desserts():
-    print("\n")
-    print("Desserts")
-    print("--------")
-    desserts_rest=["Ice Cream","Cake ","Pie"]
-    for i in desserts_rest:
-       print('\n'.join(desserts_rest))
+    Entrees
+    -------
+    Salmon
+    Steak
+    Meat Tornado
+    A Literal Garden
 
-def drinks():
-    print("\n")
-    print("Drinks")
-    print("------")
-    drinks_rest=["Coffee","Tea ","Unicorn Tears"]
-    for i in drinks_rest:
-       print('\n'.join(drinks_rest))
+    Desserts
+    --------
+    Ice Cream
+    Cake
+    Pie
 
-def order_now():
-    print("*** What would you like to order? ****")
-    print("**************************************")
-    oreder_rest= input("> ")
+    Drinks
+    ------
+    Coffee
+    Tea
+    Unicorn Tears
+
+    ***********************************
+    ** What would you like to order? **
+    ***********************************
+
+    >> Enter "quit" to exit 
+    >> Enter "meal" to display your order
+    """
+    print(first_message)
 
 
-print (restaurant_menu())
+def functionality():
+    food_list = ["Wings", "Cookies", "Spring Rolls", "Salmon", "Steak", "Meat Tornado", "A Literal Garden", "Ice Cream", "Cake", "Pie", "Coffee", "Tea", "Unicorn Tears"]
+    orders_list = {}
+    counter = 0
+    while(True):
+        
+        user_input = input(">").lower()
+        if user_input == "quit":
+            break
+        
+        elif user_input in food_list:
+            if user_input in orders_list:
+                counter += 1
+                
+            else:
+                counter = 1
+                orders_list.update({user_input: counter})
+                # orders_list.append(user_input)
+                print(f'\n** {counter} order of {user_input} have been added to your meal**\n')
+                
+                
+        # handeling the error of choosing an item not been added to the list
+        else:
+            print(f"The Product ({user_input}) that you entered is invalid. Please try again.\n")
+            while True:
+                check = input("Would you like to order anything else? (y/n) : ")
+                if (check == "y") or (check == "n"):
+                    break
+                else:
+                    print("Please select \"y\" or \"n\"\n")
+                    if check == "n":
+                        break
+
+                                
+
+                                
+main()
+functionality()
+
+
+
+                                
