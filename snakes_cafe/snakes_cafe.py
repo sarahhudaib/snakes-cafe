@@ -44,41 +44,32 @@ def main():
 
 
 def functionality():
-    food_list = ["Wings", "Cookies", "Spring Rolls", "Salmon", "Steak", "Meat Tornado", "A Literal Garden", "Ice Cream", "Cake", "Pie", "Coffee", "Tea", "Unicorn Tears"]
-    orders_list = {}
-    counter = 0
-    while(True):
-        
-        user_input = input(">").lower()
-        if user_input == "quit":
+    rest_list = ["wings", "cookies", "spring Rolls", "salmon", "steak", "meat tornado", "a literal garden", "ice cream", "cake", "pie", "coffee", "tea", "unicorn tears"]
+    counter = {item:0 for item in rest_list}
+    while True:
+        new_index = input("> ")
+        if new_index in rest_list:
+            counter[new_index] += 1
+            print(f"\n** {counter[new_index]} order of {new_index} have been added to your meal **\n")
+        elif new_index == "quit":
             break
-        
-        elif user_input in food_list:
-            if user_input in orders_list:
-                counter += 1
+        elif new_index == "meal":
+            for i in [f"{key}: {val}" for key,val in counter.items() if val!=0]:
+                print(i)
                 
-            else:
-                counter = 1
-                orders_list.update({user_input: counter})
-                # orders_list.append(user_input)
-                print(f'\n** {counter} order of {user_input} have been added to your meal**\n')
-                
-                
-        # handeling the error of choosing an item not been added to the list
+    
         else:
-            print(f"The Product ({user_input}) that you entered is invalid. Please try again.\n")
+            print(f"The provided item \"{new_index}\" is not on the list.\n")
             while True:
-                check = input("Would you like to order anything else? (y/n) : ")
-                if (check == "y") or (check == "n"):
+                answer = input("Do you want to order something else ? (yes/no) : ")
+                if (answer == "yes") or (answer == "no"):
                     break
                 else:
-                    print("Please select \"y\" or \"n\"\n")
-                    if check == "n":
-                        break
+                    print("Select \"yes\" or \"no\"\n")
+            if answer == "no":
+                break
 
-                                
-
-                                
+print("\nThank you for ordering from our restaurant \n")                         
 main()
 functionality()
 
