@@ -1,3 +1,6 @@
+from urllib import response
+
+
 def main():
     first_message = """
     $ python snakes_cafe.py
@@ -46,6 +49,8 @@ def main():
 def functionality():
     rest_list = ["wings", "cookies", "spring Rolls", "salmon", "steak", "meat tornado", "a literal garden", "ice cream", "cake", "pie", "coffee", "tea", "unicorn tears"]
     counter = {item:0 for item in rest_list}
+    
+    
     while True:
         new_index = input("> ")
         if new_index in rest_list:
@@ -61,12 +66,14 @@ def functionality():
         else:
             print(f"The provided item \"{new_index}\" is not on the list.\n")
             while True:
-                answer = input("Do you want to order something else ? (yes/no) : ")
-                if (answer == "yes") or (answer == "no"):
+                
+                
+                response = input("Do you want to order something else ? (yes/no) : ")
+                if (response == "yes") or (response == "no"):
                     break
                 else:
                     print("Select \"yes\" or \"no\"\n")
-            if answer == "no":
+            if response == "no":
                 break
 
 print("\nThank you for ordering from our restaurant \n")                         
